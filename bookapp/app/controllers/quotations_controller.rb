@@ -1,5 +1,4 @@
 class QuotationsController < ApplicationController
-
   def create
     @book = Book.find(params[:book_id])
     @quotation = @book.quotations.create(quotation_params)
@@ -14,9 +13,7 @@ class QuotationsController < ApplicationController
 
   private
 
-    def quotation_params
-      params[:quotation].permit(:body)
-    end
-
-
+  def quotation_params
+    params[:quotation].permit(:body)
+  end
 end

@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def create
     @book = Book.find(params[:book_id])
     @comment = @book.comments.create(comment_params)
@@ -12,11 +11,9 @@ class CommentsController < ApplicationController
     redirect_to edit_book_path(params[:book_id])
   end
 
-
   private
-    def comment_params
-      params[:comment].permit(:name, :content)
-    end
 
-
+  def comment_params
+    params[:comment].permit(:name, :content)
+  end
 end
