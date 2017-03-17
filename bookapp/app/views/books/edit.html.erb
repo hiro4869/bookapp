@@ -24,9 +24,9 @@
 <% end %>
 
 <h3>新しく引用する</h3>
-<%= form_for [@book,@book.quotations.build] do |f| %>
-<p><%= f.text_field :body %></p>
-<p><%= f.submit "引用を追加する" %></p>
+<%= form_tag "/books/#{@book.id}/quotations" do %>
+<p><input type="text" name="quotation[body]"></p>
+<p><input type="submit" name="引用を追加する"></p>
 <% end %>
 
 
@@ -43,10 +43,10 @@
 <% end %>
 
 <h3>新しくコメントする</h3>
-<%= form_for [@book,@book.comments.build] do |f| %>
-<p>名前：<%= f.text_field :name %></p>
-<p>コメント：<%= f.text_field :content %></p>
-<p><%= f.submit "コメントを送信" %></p>
+<%= form_tag "/books/#{@book.id}/comments" do %>
+<p>名前：<input type="text" name="comment[name]"></p>
+<p>コメント：<input type="text" name="comment[content]"></p>
+<p><input type="submit" value="コメントを送信"></p>
 <% end %>
 
 

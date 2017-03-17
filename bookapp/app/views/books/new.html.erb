@@ -2,13 +2,14 @@
 <p>必要事項を記入して新しく本を登録してください</p>
 
 
-<%= form_for @book do |f| %>
-<p>題名：<%= f.text_field :title %>(必須)</p>
-<p>価格：<%= f.text_field :price %>(必須)</p>
-<p>説明：<%= f.text_field :description %></p>
-<p>評価：<%= f.text_field :rate %>(必須)</p>
-<p><%= f.submit "作成" %></p>
+<%= form_tag '/books' do %>
+<p>題名：<input type="text" name="book[title]">(必須)</p>
+<p>価格：<input type="text" name="book[price]">(必須)</p>
+<p>説明：<input type="text" name="book[description]"></p>
+<p>評価：<input type="text" name="book[rate]">(必須)</p>
+<p><input type="submit" value="作成"></p>
 <% end %>
+
 
 
 <p><%= link_to "Home", root_path %></p>
