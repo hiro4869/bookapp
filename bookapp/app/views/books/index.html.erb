@@ -1,0 +1,9 @@
+<h1>本の一覧</h1>
+
+<% @book.each do |book| %>
+<h2>題名：<%= book.title %></h2>
+<p><%= link_to "詳細ページはこちら" , book_path(book.id) %></p>
+<p><%= link_to "管理画面はこちら" , edit_book_path(book.id) %></p>
+<hr>
+<% end %>
+<p><%= link_to "新規作成ページへ", new_book_path %></p>

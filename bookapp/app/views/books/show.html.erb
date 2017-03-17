@@ -1,0 +1,51 @@
+<h1>詳細ページ</h1>
+<h2>題名：<%= @book.title %></h2>
+<p>価格：<%= @book.price %>円</p>
+<p>説明：<%= @book.description %></p>
+<p>評価：<%= @book.rate %></p>
+
+
+<!-- ーーーーここから引用ーーーーーーーーーーーーーー -->
+
+<hr>
+<h2>引用</h2>
+
+<% @book.quotations.each do |quotation| %>
+<p>引用：<%= quotation.body %></p>
+<a>-----------------------------------------</a>
+<% end %>
+
+<h3>新しく引用する</h3>
+<%= form_for [@book,@book.quotations.build] do |f| %>
+<p><%= f.text_field :body %></p>
+<p><%= f.submit "引用を追加する" %></p>
+<% end %>
+
+
+<!-- ーーーーここからコメントーーーーーーーーーーーーーー -->
+
+<hr>
+<h2>コメント</h2>
+
+
+
+<% @book.comments.each do |comment| %>
+<p>投稿者：<%= comment.name %></p>
+<p>コメント：<%= comment.content %></p>
+<a>-----------------------------------------</a>
+<% end %>
+
+<h3>新しくコメントする</h3>
+<%= form_for [@book,@book.comments.build] do |f| %>
+<p>名前：<%= f.text_field :name %></p>
+<p>コメント：<%= f.text_field :content %></p>
+<p><%= f.submit "コメントを送信" %></p>
+<% end %>
+
+
+
+
+
+<p><%= link_to "Home", root_path %></p>
+
+
