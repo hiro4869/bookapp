@@ -16,10 +16,14 @@
 <% end %>
 
 <h3>新しく引用する</h3>
-<%= form_for [@book,@book.quotations.build] do |f| %>
-<p><%= f.text_field :body %></p>
-<p><%= f.submit "引用を追加する" %></p>
+<%= form_tag "/books/#{@book.id}/quotations" do %>
+<p><input type="text" name="quotation[body]"></p>
+<p><input type="submit" name="引用を追加する"></p>
 <% end %>
+
+
+
+
 
 
 <!-- ーーーーここからコメントーーーーーーーーーーーーーー -->
