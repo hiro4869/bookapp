@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action:set_book ,only:[:show, :edit, :update, :destroy]
+  before_action:set_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @book = Book.all
@@ -12,7 +12,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-    redirect_to root_path
+      redirect_to root_path
     else
       render new_book_path
     end
@@ -37,11 +37,10 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title,:price,:description,:rate)
+    params.require(:book).permit(:title, :price, :description, :rate)
   end
 
   def set_book
     @book = Book.find(params[:id])
   end
-
 end
