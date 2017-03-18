@@ -1,0 +1,51 @@
+<%= form_for @book do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :price %>
+    <br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :rate %>
+    <br>
+    <%= f.text_field :rate %>
+  </div>
+
+
+  <h3>引用</h3>
+
+  <div id="quotations">
+    <%= f.fields_for :quotations do |quotation| %>
+      <%= render 'quotation_fields', f: quotation %>
+      <a>-----------------------------------------</a>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association '引用を追加します', f, :quotations %>
+    </div>
+  </div>
+
+
+  <h3>コメント</h3>
+
+  <div id="comments">
+    <%= f.fields_for :comments do |comment| %>
+      <%= render 'comment_fields', f: comment %>
+      <a>-----------------------------------------</a>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'コメントを追加します', f, :comments %>
+    </div>
+  </div>
+
+  <%= f.submit %>
+
+<% end %>

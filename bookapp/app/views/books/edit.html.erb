@@ -1,55 +1,9 @@
 <h1>管理画面</h1>
+<p style="color: red;">※更新・削除処理を確定するにはページ最下部の「Update Book」を押してください。</p>
 
-<%= form_for @book do |f| %>
+<%= render 'form' %>
 
-
-
-<h2>題名：<%= f.text_field :title %></h2>
-<p>価格：<%= f.text_field :price %></p>
-<p>説明：<%= f.text_field :description %></p>
-<p>評価：<%= f.text_field :rate %></p>
-<p><%= f.submit "更新する" %></p>
-<% end %>
-<p><%= link_to "削除する", book_path(@book.id),method: :delete, data: { confirm: "削除しますか？"} %></p>
-
-<!-- ーーーここから引用ーーーーーーーーーーーー -->
-
-<hr>
-<h2>引用</h2>
-
-<% @book.quotations.each do |quotation| %>
-<p>引用：<%= quotation.body %></p>
-<p><%= link_to "引用を削除する", "/books/#{quotation.book_id}/quotations/#{quotation.id}", method: :delete ,data:{ confirm: "引用を削除しますか？"} %></p>
-<a>-----------------------------------------</a>
-<% end %>
-
-<h3>新しく引用する</h3>
-<%= form_tag "/books/#{@book.id}/quotations" do %>
-<p><input type="text" name="quotation[body]"></p>
-<p><input type="submit" name="引用を追加する"></p>
-<% end %>
-
-
-<!-- ーーーここからコメントーーーーーーーーーー -->
-
-<hr>
-<h2>コメント</h2>
-
-<% @book.comments.each do |comment| %>
-<p>投稿者：<%= comment.name %></p>
-<p>コメント：<%= comment.content %></p>
-<p><%= link_to "コメントを削除する", book_comment_path(comment.book_id, comment.id), method: :delete , data: { confirm: "コメントを削除しますか？"} %></p>
-<a>-----------------------------------------</a>
-<% end %>
-
-<h3>新しくコメントする</h3>
-<%= form_tag "/books/#{@book.id}/comments" do %>
-<p>名前：<input type="text" name="comment[name]"></p>
-<p>コメント：<input type="text" name="comment[content]"></p>
-<p><input type="submit" value="コメントを送信"></p>
-<% end %>
-
-
+<p><%= link_to "本を削除する", book_path(@book.id),method: :delete, data: { confirm: "削除しますか？"} %></p>
 
 <p><%= link_to "Home", root_path %></p>
 

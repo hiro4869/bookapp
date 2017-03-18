@@ -1,0 +1,28 @@
+
+<%= form_for @book do |f| %>
+
+  <h3>引用</h3>
+  <div id="quotations">
+    <%= f.fields_for :quotations do |quotation| %>
+      <%= render 'show_quotation_fields', f: quotation %>
+      <a>-----------------------------------------</a>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association '引用を追加します', f, :quotations %>
+    </div>
+  </div>
+
+  <h3>コメント</h3>
+  <div id="comments">
+    <%= f.fields_for :comments do |comment| %>
+      <%= render 'show_comment_fields', f: comment %>
+      <a>-----------------------------------------</a>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'コメントを追加します', f, :comments %>
+    </div>
+  </div>
+  <br>
+  <%= f.submit %>
+
+<% end %>
