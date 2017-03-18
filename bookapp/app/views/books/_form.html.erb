@@ -1,23 +1,14 @@
 <%= form_for @book do |f| %>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <h3>コメント</h3>
   <div id="comments">
     <%= f.fields_for :comments do |comment| %>
       <%= render 'comment_fields', f: comment %>
-    <div id="links">
+    <div class="links">
       <%= link_to_add_association "コメントを追加する", f, :comments %><br/>
     </div>
     <% end %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "更新" %>
   </div>
 <% end %>
