@@ -4,12 +4,12 @@
 <p>説明：<%= @book.description %></p>
 <p>評価：<%= @book.rate %></p>
 
-
-<!-- ーーーーここから引用ーーーーーーーーーーーーーー -->
-
 <hr>
-<%= render 'form' %>
 
+
+<!-- ーーーーここからコメントーーーーーーーーーーーーーー -->
+<p style="color: red;">※引用・コメント追加を確定するにはページ最下部の「Update Book」を押してください。</p>
+<%= render 'show_form' %>
 
 <p><%= link_to "Home", root_path %></p>
 

@@ -1,9 +1,9 @@
 <h1>管理画面</h1>
-
+<p style="color: red;">※更新・削除処理を確定するにはページ最下部の「Update Book」を押してください。</p>
 
 <%= render 'form' %>
 
-
+<p><%= link_to "本を削除する", book_path(@book.id),method: :delete, data: { confirm: "削除しますか？"} %></p>
 
 <p><%= link_to "Home", root_path %></p>
 
